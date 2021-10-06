@@ -1,0 +1,49 @@
+﻿@model FormWebcamJs.Domain.Models.Pessoa.PessoaViewModel
+
+<h1>Apagar Pessoa</h1>
+<hr />
+
+<form asp-controller="Pessoa" asp-action="Delete" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ImagemBase64String" class="control-label"></label>
+                <br />
+                <img src="data:image/png;base64, @Model.ImagemBase64String" height="200" width="200" style="border-radius:100%;" class="mt-5" alt="Imagem da pessoa" />
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" readonly />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" readonly />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataNascimento" class="control-label"></label>
+                <input asp-for="DataNascimento" class="form-control" readonly />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" readonly />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="submit" value="Apagar" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-dark">Voltar</a>
+            </div>
+        </div>
+    </div>
+</form>

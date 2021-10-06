@@ -16,12 +16,14 @@ namespace FormWebcamJs.WebApp.Controllers
             _pessoaRepository = pessoaRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var pessoas = _pessoaRepository.Listar();
             return View(pessoas);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -38,6 +40,20 @@ namespace FormWebcamJs.WebApp.Controllers
 
             var id = _pessoaRepository.Salvar(pessoa);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(long id)
+        {
+            var pessoa = _pessoaRepository.Obter(id);
+            return View(pessoa);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(long id, IFormCollection collection)
+        {
+            _pessoaRepository.Deletar(id);
             return RedirectToAction("Index");
         }
 
