@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FormWebcamJs.Domain\FormWebcamJs.Domain.csproj" />
     <ProjectReference Include="..\FormWebcamJs.Infra.Data\FormWebcamJs.Infra.Data.csproj" />
     <ProjectReference Include="..\FormWebcamJs.Infra\FormWebcamJs.Infra.csproj" />
-    <ProjectReference Include="..\FormWebcamJs\FormWebcamJs.Domain\FormWebcamJs.Domain.csproj" />
   </ItemGroup>
 
 </Project>

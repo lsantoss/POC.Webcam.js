@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FormWebcamJs.Infra.Crosscuting\FormWebcamJs.Infra.Crosscuting.csproj" />
     <ProjectReference Include="..\FormWebcamJs.Domain\FormWebcamJs.Domain.csproj" />
+    <ProjectReference Include="..\FormWebcamJs.Infra.Crosscuting\FormWebcamJs.Infra.Crosscuting.csproj" />
   </ItemGroup>
 
 </Project>
