@@ -1,3 +1,4 @@
+using ElmahCore.Mvc;
 using FormWebcamJs.Infra.Crosscuting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,8 @@ namespace FormWebcamJs
 
             services.AddRepositories();
 
+            services.AddElmahCore(Configuration);
+
             services.AddControllersWithViews();
         }
 
@@ -36,12 +39,15 @@ namespace FormWebcamJs
                 app.UseExceptionHandler("/Pessoa/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseElmah();
 
             app.UseEndpoints(endpoints =>
             {
