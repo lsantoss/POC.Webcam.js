@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FormWebcamJs.Domain.Models.Pessoa.PessoaViewModel>
+
+<h2>Lista de Pessoas</h2>
+
+<p>
+    <a asp-controller="Pessoa" asp-action="Create">Inserir pessoa</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ImagemBase64String)</th>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Senha)</th>
+        </tr>
+    </thead>
+
+    <tbody style="font-size:115%;">
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="data:image/png;base64, @item.ImagemBase64String" width="80" height="80" style="border-radius:100%;" /></td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Senha)</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    <br />
+                    <center><span class="text-uppercase">Não existe nenhum registro para ser listado!</span></center>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
