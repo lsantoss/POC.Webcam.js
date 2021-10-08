@@ -1,0 +1,30 @@
+﻿<div class="modal fade" id="modalPersonalizacaoImagem">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line-modal"></div>
+            <div class="modal-body" id="modalBody">
+                <div class="row">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><center><img src="~/images/rotacao-direita.png" class="center-block" style="width:55%;" onclick="girarParaDireita()" /></center></td>
+                            <td><center><img src="~/images/rotacao-esquerda.png" class="center-block" style="width:55%;" onclick="girarParaEsquerda()" /></center></td>
+                            <td><center><img src="~/images/mais-brilho.png" class="center-block" style="width:55%;" onclick="aumentarBrilho()" /></center></td>
+                            <td><center><img src="~/images/menos-brilho.png" class="center-block" style="width:55%;" onclick="diminuirBrilho()" /></center></td>
+                            <td><center><img src="~/images/preto-branco.png" class="center-block" style="width:55%;" onclick="adicionarFiltroPretoBranco()" /></center></td>
+                            <td><center><img src="~/images/voltar.png" class="center-block" style="width:55%;" onclick="desfazerModificacoes()" /></center></td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+
+                <div class="row text-center" id="modalBodyPersonalizacaoImagem">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="cancelarModificacoes()">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="confimarModificacoes()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

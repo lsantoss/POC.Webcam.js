@@ -34,9 +34,9 @@
                         <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group" hidden>
+                    <div class="form-group">
                         <label asp-for="ImagemBase64String" class="control-label"></label>
-                        <input asp-for="ImagemBase64String" class="form-control" type="text" required id="imagemBase64StringField"/>
+                        <input asp-for="ImagemBase64String" class="form-control" type="text" readonly required id="imagemBase64StringField"/>
                         <span asp-validation-for="ImagemBase64String" class="text-danger"></span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                                     <div id="resultadoImagem" style="height:160px;"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -88,6 +88,8 @@
         </form>
     </div>
 </div>
+
+<partial name="_ModalPersonalizacaoImagem.cshtml" />
 
 <script src="~/lib/webcamjs/webcam.js"></script>
 <script src="~/js/Pessoa/Create.js"></script>
