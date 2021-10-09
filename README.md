@@ -5,6 +5,7 @@
 <p>Banco de Dados: SQL Server</p>
 <p>ORM (Object Relational Mapping): Dapper</p>
 <p>Biblioteca: Webcam.js</p>
+<p>Biblioteca: Toastr</p>
 
 <h3>Detalhes:</h3>
 <p>Possibilidades de imagens</p>
