@@ -1,6 +1,7 @@
 ﻿// Variáveis globais
 var foto = "";
 var fotoEditada = "";
+var modoCapturaImagem = "webcam";
 
 // Ao carregar a página configura a webcam
 window.onload = function () {
@@ -14,6 +15,8 @@ window.onload = function () {
 
 //Preenche a div com outras divs para o uso da webcam
 function mostrarWebcam() {
+    modoCapturaImagem = "webcam";
+
     let divCameraPrincipal = document.createElement("div");
     divCameraPrincipal.setAttribute("class", "col-md-6");
 
@@ -86,6 +89,8 @@ function mostrarWebcam() {
 function mostrarInputFile() {
     Webcam.reset();
 
+    modoCapturaImagem = "inputFile";
+
     let divPainelDefault = document.createElement("div");
     divPainelDefault.setAttribute("class", "panel panel-default");
 
@@ -151,7 +156,6 @@ function tirarFoto() {
             foto = imagemBase64String;
             fotoEditada = imagemBase64String;
             mostarImagemModalEdicao(imagemBase64String);
-            $('#modalPersonalizacaoImagem').modal('show');
         }
     );
 }
@@ -165,6 +169,8 @@ function mostarImagemModalEdicao(imagemBase64String) {
 
     document.getElementById('modalBodyPersonalizacaoImagem').innerHTML = "";
     document.getElementById('modalBodyPersonalizacaoImagem').appendChild(img);
+
+    $('#modalPersonalizacaoImagem').modal('show');
 }
 
 // Rotação de imagem para direita
@@ -341,7 +347,18 @@ function cancelarModificacoes() {
 }
 
 // Mostra resultado da imagem após ser editada com filtro no modal
+// De acordo com a variável "modoCapturaImagem" a função que cria os elementos será chamada
 function confimarModificacoes() {
+    if (modoCapturaImagem === "webcam") {
+        mostrarModificacoesWebcam();
+    }
+    else {
+        mostrarModificacoesInputFile();
+	}
+}
+
+// Cria elementos com o resultado da edição no formulário - Webcam
+function mostrarModificacoesWebcam() {
     let br1 = document.createElement("br");
 
     let img = document.createElement("img");
@@ -370,6 +387,17 @@ function confimarModificacoes() {
     document.getElementById('imagemBase64StringField').value = fotoEditada.split(",")[1];
 }
 
+// Cria elementos com o resultado da edição no formulário - InputFile
+function mostrarModificacoesInputFile() {
+    let img = document.createElement("img");
+    img.setAttribute("src", `${fotoEditada}`);
+    img.style.cssText = "width:200px; height:90%;";
+
+    document.getElementById('btnInputFile').innerHTML = "";
+    document.getElementById('btnInputFile').appendChild(img);
+    document.getElementById('imagemBase64StringField').value = fotoEditada.split(",")[1];
+}
+
 // Limpa a div resultadoImagem e do input imagemBase64StringField
 function descartarFoto() {
     foto = "";
@@ -384,7 +412,9 @@ function obterArquivoInputFile(elemento) {
     const file = elemento.files[0];
     const reader = new FileReader();
     reader.onloadend = function () {
-        document.getElementById('imagemBase64StringField').value = reader.result.split(",")[1];
+        foto = reader.result;
+        fotoEditada = reader.result;
+        mostarImagemModalEdicao(foto);
     }
     reader.readAsDataURL(file);
 }

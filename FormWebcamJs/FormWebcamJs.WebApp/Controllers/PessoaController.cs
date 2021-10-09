@@ -20,6 +20,7 @@ namespace FormWebcamJs.WebApp.Controllers
         public IActionResult Index()
         {
             var pessoas = _pessoaRepository.Listar();
+
             return View(pessoas);
         }
 
@@ -40,6 +41,8 @@ namespace FormWebcamJs.WebApp.Controllers
 
             var id = _pessoaRepository.Salvar(pessoa);
 
+            TempData["success"] = "Pessoa adicionada com sucesso!";
+
             return RedirectToAction("Index");
         }
 
@@ -47,6 +50,7 @@ namespace FormWebcamJs.WebApp.Controllers
         public ActionResult Delete(long id)
         {
             var pessoa = _pessoaRepository.Obter(id);
+
             return View(pessoa);
         }
 
@@ -54,6 +58,9 @@ namespace FormWebcamJs.WebApp.Controllers
         public ActionResult Delete(long id, IFormCollection collection)
         {
             _pessoaRepository.Deletar(id);
+
+            TempData["success"] = "Pessoa apagada com sucesso!";
+
             return RedirectToAction("Index");
         }
 
