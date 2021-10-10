@@ -4,6 +4,7 @@ using FormWebcamJs.Domain.Models.Pessoa;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using FormWebcamJs.Infra.Hash;
 
 namespace FormWebcamJs.WebApp.Controllers
 {
@@ -36,8 +37,7 @@ namespace FormWebcamJs.WebApp.Controllers
             var pessoa = new PessoaViewModel();
             TryUpdateModelAsync(pessoa);
 
-            if (pessoa.ImagemBase64String is null)
-                pessoa.DefinirImagemBase64StringGenerica();
+            pessoa.Senha = HashHelper.GerarHash(pessoa.Senha);
 
             var id = _pessoaRepository.Salvar(pessoa);
 

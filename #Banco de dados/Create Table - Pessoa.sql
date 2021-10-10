@@ -7,7 +7,7 @@ BEGIN
 		[Nome] [nvarchar](50) NOT NULL,
 		[DataNascimento] [datetime] NOT NULL,
 		[Email] [nvarchar](50) NOT NULL,
-		[Senha] [nvarchar](50) NOT NULL,
+		[Senha] [nvarchar](100) NOT NULL,
 		[ImagemBase64String] [nvarchar](max) NOT NULL,
 	 CONSTRAINT [PK_Pessoa] PRIMARY KEY CLUSTERED 
 	(
