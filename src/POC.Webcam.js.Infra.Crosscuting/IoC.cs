@@ -12,9 +12,9 @@ namespace POC.Webcam.js.Infra.Crosscuting
     {
         public static IServiceCollection AddAppSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            var settingsDatabase = new SettingsDatabase();
-            configuration.GetSection("SettingsDatabase").Bind(settingsDatabase);
-            services.AddSingleton(settingsDatabase);
+            var appSettings = new AppSettings();
+            configuration.Bind(appSettings);
+            services.AddSingleton(appSettings);
 
             return services;
         }
@@ -29,7 +29,7 @@ namespace POC.Webcam.js.Infra.Crosscuting
         {
             services.AddElmah<SqlErrorLog>(options =>
             {
-                options.ConnectionString = configuration["SettingsDatabase:ConnectionString"];
+                options.ConnectionString = configuration["ConnectionString"];
             });
 
             return services;

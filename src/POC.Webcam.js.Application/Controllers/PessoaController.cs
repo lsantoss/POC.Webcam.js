@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using POC.Webcam.js.Application.Models.Error;
 using POC.Webcam.js.Domain.Person.Entities;
 using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
-using POC.Webcam.js.Infra.Hash;
+using POC.Webcam.js.Infra.Helpers;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -38,7 +38,7 @@ namespace POC.Webcam.js.Application.Controllers
             var pessoa = new Person();
             await TryUpdateModelAsync(pessoa);
 
-            pessoa.Password = HashHelper.GerarHash(pessoa.Password);
+            pessoa.Password = HashHelper.GenerateHash(pessoa.Password);
 
             var id = await _pessoaRepository.Insert(pessoa);
 

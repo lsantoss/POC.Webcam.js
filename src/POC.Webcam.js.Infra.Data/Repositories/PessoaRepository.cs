@@ -13,10 +13,10 @@ namespace POC.Webcam.js.Infra.Data.Repositories
 {
     public class PessoaRepository : IPersonRepository
     {
-        private readonly SettingsDatabase _settingsDatabase;
+        private readonly AppSettings _settingsDatabase;
         private readonly DynamicParameters _parametros = new DynamicParameters();
 
-        public PessoaRepository(SettingsDatabase settingsDatabase)
+        public PessoaRepository(AppSettings settingsDatabase)
         {
             _settingsDatabase = settingsDatabase;
         }
