@@ -1,11 +1,10 @@
 ﻿using Dapper;
 using POC.Webcam.js.Domain.Person.Entities;
 using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
+using POC.Webcam.js.Infra.Data.DataContexts;
 using POC.Webcam.js.Infra.Data.Repositories.Queries;
-using POC.Webcam.js.Infra.Settings;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,69 +12,54 @@ namespace POC.Webcam.js.Infra.Data.Repositories
 {
     public class PersonRepository : IPersonRepository
     {
-        private readonly AppSettings _settingsDatabase;
-        private readonly DynamicParameters _parametros = new DynamicParameters();
+        private readonly DataContext _dataContext;
+        private readonly DynamicParameters _parameters = new();
 
-        public PersonRepository(AppSettings settingsDatabase)
+        public PersonRepository(DataContext dataContext)
         {
-            _settingsDatabase = settingsDatabase;
+            _dataContext = dataContext;
         }
 
-        public async Task<long> Insert(Person pessoa)
+        public async Task<long> Insert(Person person)
         {
-            _parametros.Add("Nome", pessoa.Name, DbType.String);
-            _parametros.Add("DataNascimento", pessoa.Birth, DbType.DateTime);
-            _parametros.Add("Email", pessoa.Email, DbType.String);
-            _parametros.Add("Senha", pessoa.Password, DbType.String);
-            _parametros.Add("ImagemBase64String", pessoa.Image, DbType.String);
+            _parameters.Add("Name", person.Name, DbType.String);
+            _parameters.Add("Birth", person.Birth, DbType.DateTime);
+            _parameters.Add("Email", person.Email, DbType.String);
+            _parameters.Add("Password", person.Password, DbType.String);
+            _parameters.Add("Image", person.Image, DbType.String);
 
-            using (var connection = new SqlConnection(_settingsDatabase.ConnectionString))
-            {
-                return connection.ExecuteScalar<long>(PessoaQueries.Salvar, _parametros);
-            }
+            return await _dataContext.Connection.ExecuteScalarAsync<long>(PersonQueries.Insert, _parameters);
         }
 
-        public async Task Update(Person pessoa)
+        public async Task Update(Person person)
         {
-            _parametros.Add("Id", pessoa.Id, DbType.Int64);
-            _parametros.Add("Nome", pessoa.Name, DbType.String);
-            _parametros.Add("DataNascimento", pessoa.Birth, DbType.DateTime);
-            _parametros.Add("Email", pessoa.Email, DbType.String);
-            _parametros.Add("Senha", pessoa.Password, DbType.String);
-            _parametros.Add("ImagemBase64String", pessoa.Image, DbType.String);
+            _parameters.Add("Id", person.Id, DbType.Int64);
+            _parameters.Add("Name", person.Name, DbType.String);
+            _parameters.Add("Birth", person.Birth, DbType.DateTime);
+            _parameters.Add("Email", person.Email, DbType.String);
+            _parameters.Add("Password", person.Password, DbType.String);
+            _parameters.Add("Image", person.Image, DbType.String);
 
-            using (var connection = new SqlConnection(_settingsDatabase.ConnectionString))
-            {
-                connection.Execute(PessoaQueries.Atualizar, _parametros);
-            }
+            await _dataContext.Connection.ExecuteAsync(PersonQueries.Update, _parameters);
         }
 
         public async Task Delete(long id)
         {
-            _parametros.Add("Id", id, DbType.Int64);
+            _parameters.Add("Id", id, DbType.Int64);
 
-            using (var connection = new SqlConnection(_settingsDatabase.ConnectionString))
-            {
-                connection.Execute(PessoaQueries.Deletar, _parametros);
-            }
+            await _dataContext.Connection.ExecuteAsync(PersonQueries.Delete, _parameters);
         }
 
         public async Task<Person> Get(long id)
         {
-            _parametros.Add("Id", id, DbType.Int64);
+            _parameters.Add("Id", id, DbType.Int64);
 
-            using (var connection = new SqlConnection(_settingsDatabase.ConnectionString))
-            {
-                return connection.Query<Person>(PessoaQueries.Obter, _parametros).FirstOrDefault();
-            }
+            return (await _dataContext.Connection.QueryAsync<Person>(PersonQueries.Get, _parameters)).FirstOrDefault();
         }
 
         public async Task<List<Person>> List()
         {
-            using (var connection = new SqlConnection(_settingsDatabase.ConnectionString))
-            {
-                return connection.Query<Person>(PessoaQueries.Listar).ToList();
-            }
+            return (await _dataContext.Connection.QueryAsync<Person>(PersonQueries.List)).ToList();
         }
     }
 }
