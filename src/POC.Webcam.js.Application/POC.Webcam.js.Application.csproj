@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\POC.Webcam.js.Domain\POC.Webcam.js.Domain.csproj" />
-    <ProjectReference Include="..\POC.Webcam.js.Infra.Crosscuting\POC.Webcam.js.Infra.Crosscuting.csproj" />
+    <ProjectReference Include="..\POC.Webcam.js.Infra.Crosscutting\POC.Webcam.js.Infra.Crosscutting.csproj" />
   </ItemGroup>
 
 </Project>

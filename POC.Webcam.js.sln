@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Domain", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra", "src\POC.Webcam.js.Infra\POC.Webcam.js.Infra.csproj", "{8C5EC25C-CE15-4233-B5E0-E0935530B8B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra.Crosscuting", "src\POC.Webcam.js.Infra.Crosscuting\POC.Webcam.js.Infra.Crosscuting.csproj", "{59904A99-6694-4795-A5D5-840C82EF9B68}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra.Data", "src\POC.Webcam.js.Infra.Data\POC.Webcam.js.Infra.Data.csproj", "{CCF537BB-C454-42C3-8CE3-43CBA4570912}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra.Crosscutting", "src\POC.Webcam.js.Infra.Crosscutting\POC.Webcam.js.Infra.Crosscutting.csproj", "{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +37,14 @@ Global
 		{8C5EC25C-CE15-4233-B5E0-E0935530B8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C5EC25C-CE15-4233-B5E0-E0935530B8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C5EC25C-CE15-4233-B5E0-E0935530B8B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59904A99-6694-4795-A5D5-840C82EF9B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59904A99-6694-4795-A5D5-840C82EF9B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59904A99-6694-4795-A5D5-840C82EF9B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59904A99-6694-4795-A5D5-840C82EF9B68}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCF537BB-C454-42C3-8CE3-43CBA4570912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCF537BB-C454-42C3-8CE3-43CBA4570912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCF537BB-C454-42C3-8CE3-43CBA4570912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCF537BB-C454-42C3-8CE3-43CBA4570912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,8 +53,8 @@ Global
 		{DBECB3C7-C161-4266-82BF-974C6CFFB7D7} = {796F5DF9-ED12-4F0A-A74E-4176CBDA93FF}
 		{BDDDC259-4699-49A4-98D7-C294F925DC94} = {7DA477D1-65C6-4A0D-BE9E-4F95C164B6CE}
 		{8C5EC25C-CE15-4233-B5E0-E0935530B8B6} = {3A88A2EA-1895-4BC8-B7DC-7F451C5C073C}
-		{59904A99-6694-4795-A5D5-840C82EF9B68} = {3A88A2EA-1895-4BC8-B7DC-7F451C5C073C}
 		{CCF537BB-C454-42C3-8CE3-43CBA4570912} = {3A88A2EA-1895-4BC8-B7DC-7F451C5C073C}
+		{5B6D3730-1AC0-4257-A4A4-9A9464DB4E62} = {3A88A2EA-1895-4BC8-B7DC-7F451C5C073C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE2A50A5-06E9-4F39-8DEB-228FD0E07270}

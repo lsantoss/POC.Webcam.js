@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using POC.Webcam.js.Infra.Crosscuting;
+using POC.Webcam.js.Infra.Crosscutting;
 
 namespace POC.Webcam.js.Application
 {

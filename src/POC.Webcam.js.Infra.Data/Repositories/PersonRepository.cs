@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace POC.Webcam.js.Infra.Data.Repositories
 {
-    public class PessoaRepository : IPersonRepository
+    public class PersonRepository : IPersonRepository
     {
         private readonly AppSettings _settingsDatabase;
         private readonly DynamicParameters _parametros = new DynamicParameters();
 
-        public PessoaRepository(AppSettings settingsDatabase)
+        public PersonRepository(AppSettings settingsDatabase)
         {
             _settingsDatabase = settingsDatabase;
         }

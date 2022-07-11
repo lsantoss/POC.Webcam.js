@@ -6,7 +6,7 @@ using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.Repositories;
 using POC.Webcam.js.Infra.Settings;
 
-namespace POC.Webcam.js.Infra.Crosscuting
+namespace POC.Webcam.js.Infra.Crosscutting
 {
     public static class IoC
     {
@@ -21,17 +21,13 @@ namespace POC.Webcam.js.Infra.Crosscuting
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IPersonRepository, PessoaRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
             return services;
         }
 
         public static IServiceCollection AddElmahCore(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddElmah<SqlErrorLog>(options =>
-            {
-                options.ConnectionString = configuration["ConnectionString"];
-            });
-
+            services.AddElmah<SqlErrorLog>(options => { options.ConnectionString = configuration["ConnectionString"]; });
             return services;
         }
     }
