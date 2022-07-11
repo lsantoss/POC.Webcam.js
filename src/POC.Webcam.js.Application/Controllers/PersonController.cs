@@ -41,7 +41,7 @@ namespace POC.Webcam.js.Application.Controllers
 
             _ = await _personRepository.Insert(person);
 
-            TempData["success"] = "Person added successfully!";
+            TempData["toastr-success"] = "Person added successfully!";
 
             return RedirectToAction("Index");
         }
@@ -58,7 +58,7 @@ namespace POC.Webcam.js.Application.Controllers
         {
             await _personRepository.Delete(id);
 
-            TempData["success"] = "Person successfully deleted!";
+            TempData["toastr-success"] = "Person successfully deleted!";
 
             return RedirectToAction("Index");
         }

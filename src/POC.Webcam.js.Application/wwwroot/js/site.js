@@ -17,22 +17,18 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-// Toastr
+// Toastr global using TempData
 (function () {
-    var displayMessage = function (message, msgType) {
-        toastr[msgType](message);
-    };
-
-    if (document.getElementById('success').value) {
-        displayMessage(document.getElementById('success').value, 'success');
+    if (document.getElementById('toastr-success').value) {
+        toastr.success(document.getElementById('toastr-success').value);
     }
-    if (document.getElementById('info').value) {
-        displayMessage(document.getElementById('info').value, 'info');
+    if (document.getElementById('toastr-info').value) {
+        toastr.info(document.getElementById('toastr-info').value);
     }
-    if (document.getElementById('warning').value) {
-        displayMessage(document.getElementById('warning').value, 'warning');
+    if (document.getElementById('toastr-warning').value) {
+        toastr.warning(document.getElementById('toastr-warning').value);
     }
-    if (document.getElementById('error').value) {
-        displayMessage(document.getElementById('error').value, 'error');
+    if (document.getElementById('toastr-error').value) {
+        toastr.error(document.getElementById('toastr-error').value);
     }
 })();
