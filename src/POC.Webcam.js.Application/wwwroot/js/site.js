@@ -1,23 +1,25 @@
-﻿// Toastr
+﻿// Toastr Options
+toastr.options = {
+    "closeButton": true,
+    "progressBar": true,
+    "debug": false,
+    "newestOnTop": false,
+    "preventDuplicates": false,
+    "positionClass": "toast-top-right",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "10000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
+// Toastr
 (function () {
     var displayMessage = function (message, msgType) {
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true,
-            "debug": false,
-            "newestOnTop": false,
-            "preventDuplicates": false,
-            "positionClass": "toast-top-right",
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "10000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
         toastr[msgType](message);
     };
 

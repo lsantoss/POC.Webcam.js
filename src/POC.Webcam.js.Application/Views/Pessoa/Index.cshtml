@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Person>
 
-<h2 class="float-left">Lista de Pessoas</h2>
+<h2 class="float-left">Person List</h2>
 
 <p class="float-right">
-    <a asp-controller="Pessoa" asp-action="Create" class="btn btn-primary">Inserir pessoa</a>
+    <a asp-controller="Person" asp-action="Create" class="btn btn-primary">Insert person</a>
 </p>
 
 <table class="table mt-3">
@@ -14,7 +14,7 @@
             <th>@Html.DisplayNameFor(model => model.Name)</th>
             <th>@Html.DisplayNameFor(model => model.Birth)</th>
             <th>@Html.DisplayNameFor(model => model.Email)</th>
-            <th>Ações</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -30,7 +30,7 @@
                     <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Birth)</td>
                     <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Email)</td>
                     <td style="vertical-align: middle;">
-                        @Html.ActionLink("Apagar", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
@@ -40,7 +40,7 @@
             <tr>
                 <td colspan="6">
                     <br />
-                    <center><span class="text-uppercase">Não existe nenhum registro para ser listado!</span></center>
+                    <center><span class="text-uppercase">There is no record to be listed!</span></center>
                 </td>
             </tr>
         }

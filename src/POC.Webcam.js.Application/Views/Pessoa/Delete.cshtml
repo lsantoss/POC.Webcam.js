@@ -1,15 +1,15 @@
 ﻿@model Person
 
-<h1>Apagar Pessoa</h1>
+<h1>Delete Person</h1>
 <hr />
 
-<form asp-controller="Pessoa" asp-action="Delete" method="post">
+<form asp-controller="Person" asp-action="Delete" method="post">
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
                 <br />
-                <img src="data:image/png;base64, @Model.Image" height="200" width="200" style="border-radius:100%;" class="mt-5" alt="Imagem da pessoa" />
+                <img src="data:image/png;base64, @Model.Image" height="200" width="200" style="border-radius:100%;" class="mt-5" alt="Person image" />
             </div>
         </div>
 
@@ -41,8 +41,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <input type="submit" value="Apagar" class="btn btn-danger" />
-                <a asp-action="Index" class="btn btn-dark">Voltar</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-dark">Back to List</a>
             </div>
         </div>
     </div>

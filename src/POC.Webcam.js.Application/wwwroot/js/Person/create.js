@@ -14,7 +14,7 @@ window.onload = function () {
 }
 
 //Preenche a div com outras divs para o uso da webcam
-function mostrarWebcam() {
+function showWebcam() {
     modoCapturaImagem = "webcam";
 
     let divCameraPrincipal = document.createElement("div");
@@ -38,7 +38,7 @@ function mostrarWebcam() {
     divCameraInputButtonTirarFoto.setAttribute("type", "button");
     divCameraInputButtonTirarFoto.setAttribute("class", "btn btn-primary");
     divCameraInputButtonTirarFoto.setAttribute("value", "Tirar foto");
-    divCameraInputButtonTirarFoto.setAttribute("onClick", "tirarFoto()");
+    divCameraInputButtonTirarFoto.setAttribute("onClick", "takePicture()");
 
     divCameraPrincipal.appendChild(divCameraPainelDefault);
     divCameraPainelDefault.appendChild(divCameraPainelHeading);
@@ -61,7 +61,7 @@ function mostrarWebcam() {
     divResultadoPainelBody.setAttribute("class", "panel-body");
 
     let divResultadoImagem = document.createElement("div");
-    divResultadoImagem.setAttribute("id", "resultadoImagem");
+    divResultadoImagem.setAttribute("id", "imageResult");
     divResultadoImagem.style.cssText = "height:160px;";
 
     divResultadoPrincipal.appendChild(divResultadoPainelDefault);
@@ -69,13 +69,13 @@ function mostrarWebcam() {
     divResultadoPainelDefault.appendChild(divResultadoPainelBody);
     divResultadoPainelBody.appendChild(divResultadoImagem);
 
-    document.getElementById('divEscolha').innerHTML = "";
-    document.getElementById('divEscolha').appendChild(divCameraPrincipal);
-    document.getElementById('divEscolha').appendChild(divResultadoPrincipal);
+    document.getElementById('divChoice').innerHTML = "";
+    document.getElementById('divChoice').appendChild(divCameraPrincipal);
+    document.getElementById('divChoice').appendChild(divResultadoPrincipal);
 
     foto = "";
     fotoEditada = "";
-    document.getElementById('imagemBase64StringField').value = "";
+    document.getElementById('imageBase64StringField').value = "";
 
     Webcam.set({
         width: 225,
@@ -86,7 +86,7 @@ function mostrarWebcam() {
 }
 
 // Preenche a div com um input type file, para escolha de uma imagem local
-function mostrarInputFile() {
+function showInputFile() {
     Webcam.reset();
 
     modoCapturaImagem = "inputFile";
@@ -115,7 +115,7 @@ function mostrarInputFile() {
     btnUpload.setAttribute("id", "btnInputFile");
 
     let imgBtnUpload = document.createElement("img");
-    imgBtnUpload.setAttribute("src", "/images/upload-nuvem.png");
+    imgBtnUpload.setAttribute("src", "/images/upload-cloud.png");
     imgBtnUpload.style.cssText = "width:90px; height:90px;";
 
     let brBtnUpload = document.createElement("br");
@@ -139,18 +139,18 @@ function mostrarInputFile() {
     divUploadBtnWrapper.appendChild(btnUpload);
     divUploadBtnWrapper.appendChild(inputFile);
 
-    document.getElementById('divEscolha').innerHTML = "";
-    document.getElementById('divEscolha').appendChild(divPainelDefault);
+    document.getElementById('divChoice').innerHTML = "";
+    document.getElementById('divChoice').appendChild(divPainelDefault);
 
     foto = "";
     fotoEditada = "";
-    document.getElementById('imagemBase64StringField').value = "";
+    document.getElementById('imageBase64StringField').value = "";
 }
 
 // Captura imagem ao clicar no botão "Tirar foto"
-// Mostra resultadoImagem na página
-// #imagemBase64StringField recebe o base64String tratado da ultima foto tirada
-function tirarFoto() {
+// Mostra imageResult na página
+// #imageBase64StringField recebe o base64String tratado da ultima foto tirada
+function takePicture() {
     Webcam.snap(
         function (imagemBase64String) {
             foto = imagemBase64String;
@@ -170,11 +170,11 @@ function mostarImagemModalEdicao(imagemBase64String) {
     document.getElementById('modalBodyPersonalizacaoImagem').innerHTML = "";
     document.getElementById('modalBodyPersonalizacaoImagem').appendChild(img);
 
-    $('#modalPersonalizacaoImagem').modal('show');
+    $('#modalImageCustomization').modal('show');
 }
 
 // Rotação de imagem para direita
-function girarParaDireita() {
+function turnRight() {
     var imgOriginal = new Image();
     imgOriginal.src = fotoEditada;
 
@@ -215,7 +215,7 @@ function girarParaDireita() {
 }
 
 // Rotação de imagem para esquerda
-function girarParaEsquerda() {
+function turnLeft() {
     var imgOriginal = new Image();
     imgOriginal.src = fotoEditada;
 
@@ -256,7 +256,7 @@ function girarParaEsquerda() {
 }
 
 /////// Aumenta o brilho da imagem
-function aumentarBrilho() {
+function increaseBrightness() {
     var imgOriginal = new Image();
     imgOriginal.src = fotoEditada;
 
@@ -282,7 +282,7 @@ function aumentarBrilho() {
 }
 
 // Diminui o brilho da imagem
-function diminuirBrilho() {
+function decreaseBrightness() {
     var imgOriginal = new Image();
     imgOriginal.src = fotoEditada;
 
@@ -308,7 +308,7 @@ function diminuirBrilho() {
 }
 
 // Imagem para preto e branco
-function adicionarFiltroPretoBranco() {
+function addFilterBlackWhite() {
     var imgOriginal = new Image();
     imgOriginal.src = fotoEditada;
 
@@ -334,13 +334,13 @@ function adicionarFiltroPretoBranco() {
 }
 
 // Restaura a imagem original
-function desfazerModificacoes() {
+function undoChanges() {
     fotoEditada = foto;
     mostarImagemModalEdicao(fotoEditada);
 }
 
 // Descarta todas as modificações feitas na imagem
-function cancelarModificacoes() {
+function cancelModifications() {
     foto = "";
     fotoEditada = "";
     document.getElementById('modalBodyPersonalizacaoImagem').innerHTML = "";
@@ -348,7 +348,7 @@ function cancelarModificacoes() {
 
 // Mostra resultado da imagem após ser editada com filtro no modal
 // De acordo com a variável "modoCapturaImagem" a função que cria os elementos será chamada
-function confimarModificacoes() {
+function confirmModifications() {
     if (modoCapturaImagem === "webcam") {
         mostrarModificacoesWebcam();
     }
@@ -377,14 +377,14 @@ function mostrarModificacoesWebcam() {
     inputButton.setAttribute("value", "Descartar");
     inputButton.setAttribute("onClick", "descartarFoto()");
 
-    document.getElementById('resultadoImagem').innerHTML = "";
-    document.getElementById('resultadoImagem').appendChild(br1);
-    document.getElementById('resultadoImagem').appendChild(img);
-    document.getElementById('resultadoImagem').appendChild(br2);
-    document.getElementById('resultadoImagem').appendChild(br3);
-    document.getElementById('resultadoImagem').appendChild(br4);
-    document.getElementById('resultadoImagem').appendChild(inputButton);
-    document.getElementById('imagemBase64StringField').value = fotoEditada.split(",")[1];
+    document.getElementById('imageResult').innerHTML = "";
+    document.getElementById('imageResult').appendChild(br1);
+    document.getElementById('imageResult').appendChild(img);
+    document.getElementById('imageResult').appendChild(br2);
+    document.getElementById('imageResult').appendChild(br3);
+    document.getElementById('imageResult').appendChild(br4);
+    document.getElementById('imageResult').appendChild(inputButton);
+    document.getElementById('imageBase64StringField').value = fotoEditada.split(",")[1];
 }
 
 // Cria elementos com o resultado da edição no formulário - InputFile
@@ -395,19 +395,19 @@ function mostrarModificacoesInputFile() {
 
     document.getElementById('btnInputFile').innerHTML = "";
     document.getElementById('btnInputFile').appendChild(img);
-    document.getElementById('imagemBase64StringField').value = fotoEditada.split(",")[1];
+    document.getElementById('imageBase64StringField').value = fotoEditada.split(",")[1];
 }
 
-// Limpa a div resultadoImagem e do input imagemBase64StringField
+// Limpa a div imageResult e do input imageBase64StringField
 function descartarFoto() {
     foto = "";
     fotoEditada = "";
-    document.getElementById('resultadoImagem').innerHTML = "";
-    document.getElementById('imagemBase64StringField').value = "";
+    document.getElementById('imageResult').innerHTML = "";
+    document.getElementById('imageBase64StringField').value = "";
 }
 
 // Obtem arquivo selecionado no input file
-// #imagemBase64StringField recebe o base64String tratado da ultima foto tirada
+// #imageBase64StringField recebe o base64String tratado da ultima foto tirada
 function obterArquivoInputFile(elemento) {
     const file = elemento.files[0];
     const reader = new FileReader();

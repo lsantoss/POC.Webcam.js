@@ -1,11 +1,11 @@
 ﻿@model Person
 
-<h2>Inserir Pessoa</h2>
+<h2>Insert Person</h2>
 <hr />
 
 <div class="row">
     <div class="col-md-12">
-        <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data">
+        <form asp-controller="Person" asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="row">
@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label asp-for="Image" class="control-label"></label>
-                        <input asp-for="Image" class="form-control" type="text" readonly required id="imagemBase64StringField"/>
+                        <input asp-for="Image" class="form-control" type="text" readonly required id="imageBase64StringField"/>
                         <span asp-validation-for="Image" class="text-danger"></span>
                     </div>
                 </div>
@@ -44,31 +44,31 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="control-label">Imagem de perfil</label>
+                            <label class="control-label">Profile picture</label>
                             <br />
-                            <input type="radio" name="EscolhaImagem" value="webcam" id="radioWebcam" onclick="mostrarWebcam()" checked> Capturar uma imagem com Webcam<br>
-                            <input type="radio" name="EscolhaImagem" value="local" id="radioLocal" onclick="mostrarInputFile()"> Escolher uma foto local<br>
+                            <input type="radio" value="webcam" id="radioWebcam" onclick="showWebcam()" checked> Capture an Image with Webcam<br>
+                            <input type="radio" value="local" id="radioLocal" onclick="showInputFile()"> Choose a local photo<br>
                             <br />
                         </div>
                     </div>
 
-                    <div class="row" id="divEscolha">
+                    <div class="row" id="divChoice">
                         <div class="col-md-6">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Câmera</div>
+                                <div class="panel-heading">Camera</div>
                                 <div class="panel-body">
                                     <div id="divWebcam" class="center-block"></div>
                                     <br />
-                                    <input type="button" class="btn btn-primary" value="Tirar foto" onClick="tirarFoto()">
+                                    <input type="button" class="btn btn-primary" value="Take a picture" onClick="takePicture()">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Arte final</div>
+                                <div class="panel-heading">Final photo</div>
                                 <div class="panel-body">
-                                    <div id="resultadoImagem" style="height:160px;"></div>
+                                    <div id="imageResult" style="height:160px;"></div>
                                 </div>
                             </div>
                         </div>                        
@@ -80,8 +80,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
-                        <a asp-action="Index" class="btn btn-dark">Voltar</a>
+                        <input type="submit" value="Insert" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-dark">Back to List</a>
                     </div>
                 </div>
             </div>
@@ -89,10 +89,10 @@
     </div>
 </div>
 
-<partial name="_ModalPersonalizacaoImagem.cshtml" />
+<partial name="_ModalImageCustomization.cshtml" />
 
 <script src="~/lib/webcamjs/webcam.js"></script>
-<script src="~/js/Pessoa/Create.js"></script>
+<script src="~/js/Person/create.js"></script>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

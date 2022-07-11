@@ -9,21 +9,20 @@ using System.Threading.Tasks;
 
 namespace POC.Webcam.js.Application.Controllers
 {
-    public class PessoaController : Controller
+    public class PersonController : Controller
     {
-        private readonly IPersonRepository _pessoaRepository;
+        private readonly IPersonRepository _personRepository;
 
-        public PessoaController(IPersonRepository pessoaRepository)
+        public PersonController(IPersonRepository personRepository)
         {
-            _pessoaRepository = pessoaRepository;
+            _personRepository = personRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var pessoas = await _pessoaRepository.List();
-
-            return View(pessoas);
+            var personList = await _personRepository.List();
+            return View(personList);
         }
 
         [HttpGet]
@@ -35,14 +34,14 @@ namespace POC.Webcam.js.Application.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(IFormCollection collection)
         {
-            var pessoa = new Person();
-            await TryUpdateModelAsync(pessoa);
+            var person = new Person();
+            await TryUpdateModelAsync(person);
 
-            pessoa.Password = HashHelper.GenerateHash(pessoa.Password);
+            person.Password = HashHelper.GenerateHash(person.Password);
 
-            var id = await _pessoaRepository.Insert(pessoa);
+            _ = await _personRepository.Insert(person);
 
-            TempData["success"] = "Pessoa adicionada com sucesso!";
+            TempData["success"] = "Person added successfully!";
 
             return RedirectToAction("Index");
         }
@@ -50,25 +49,21 @@ namespace POC.Webcam.js.Application.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(long id)
         {
-            var pessoa = await _pessoaRepository.Get(id);
-
-            return View(pessoa);
+            var person = await _personRepository.Get(id);
+            return View(person);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(long id, IFormCollection collection)
         {
-            await _pessoaRepository.Delete(id);
+            await _personRepository.Delete(id);
 
-            TempData["success"] = "Pessoa apagada com sucesso!";
+            TempData["success"] = "Person successfully deleted!";
 
             return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

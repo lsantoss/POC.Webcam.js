@@ -1,0 +1,30 @@
+﻿<div class="modal fade" id="modalImageCustomization">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line-modal"></div>
+            <div class="modal-body" id="modalBody">
+                <div class="row">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><center><img src="~/images/turn-right.png" class="center-block" style="width:55%;" onclick="turnRight()" /></center></td>
+                            <td><center><img src="~/images/turn-leftt.png" class="center-block" style="width:55%;" onclick="turnLeft()" /></center></td>
+                            <td><center><img src="~/images/increase-brightness.png" class="center-block" style="width:55%;" onclick="increaseBrightness()" /></center></td>
+                            <td><center><img src="~/images/decrease-brightness.png" class="center-block" style="width:55%;" onclick="decreaseBrightness()" /></center></td>
+                            <td><center><img src="~/images/black-white.png" class="center-block" style="width:55%;" onclick="addFilterBlackWhite()" /></center></td>
+                            <td><center><img src="~/images/left-arrow.png" class="center-block" style="width:55%;" onclick="undoChanges()" /></center></td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+
+                <div class="row text-center" id="modalBodyPersonalizacaoImagem">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="cancelModifications()">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="confirmModifications()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
