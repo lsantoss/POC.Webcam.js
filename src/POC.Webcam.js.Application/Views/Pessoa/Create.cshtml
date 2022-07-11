@@ -1,0 +1,99 @@
+﻿@model PessoaViewModel
+
+<h2>Inserir Pessoa</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-controller="Pessoa" asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" type="text" required maxlength="50" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DataNascimento" class="control-label"></label>
+                        <input asp-for="DataNascimento" class="form-control" type="date" required />
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" type="email" required maxlength="50" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Senha" class="control-label"></label>
+                        <input asp-for="Senha" class="form-control" type="password" required maxlength="100" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ImagemBase64String" class="control-label"></label>
+                        <input asp-for="ImagemBase64String" class="form-control" type="text" readonly required id="imagemBase64StringField"/>
+                        <span asp-validation-for="ImagemBase64String" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Imagem de perfil</label>
+                            <br />
+                            <input type="radio" name="EscolhaImagem" value="webcam" id="radioWebcam" onclick="mostrarWebcam()" checked> Capturar uma imagem com Webcam<br>
+                            <input type="radio" name="EscolhaImagem" value="local" id="radioLocal" onclick="mostrarInputFile()"> Escolher uma foto local<br>
+                            <br />
+                        </div>
+                    </div>
+
+                    <div class="row" id="divEscolha">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Câmera</div>
+                                <div class="panel-body">
+                                    <div id="divWebcam" class="center-block"></div>
+                                    <br />
+                                    <input type="button" class="btn btn-primary" value="Tirar foto" onClick="tirarFoto()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Arte final</div>
+                                <div class="panel-body">
+                                    <div id="resultadoImagem" style="height:160px;"></div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-dark">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<partial name="_ModalPersonalizacaoImagem.cshtml" />
+
+<script src="~/lib/webcamjs/webcam.js"></script>
+<script src="~/js/Pessoa/Create.js"></script>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
