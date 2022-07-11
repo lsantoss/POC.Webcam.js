@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PessoaViewModel>
+﻿@model IEnumerable<Person>
 
 <h2 class="float-left">Lista de Pessoas</h2>
 
@@ -9,10 +9,10 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.ImagemBase64String)</th>
+            <th>@Html.DisplayNameFor(model => model.Image)</th>
             <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.Nome)</th>
-            <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Birth)</th>
             <th>@Html.DisplayNameFor(model => model.Email)</th>
             <th>Ações</th>
         </tr>
@@ -24,10 +24,10 @@
             foreach (var item in Model)
             {
                 <tr>
-                    <td><img src="data:image/png;base64, @item.ImagemBase64String" width="80" height="80" style="border-radius:100%;" /></td>
+                    <td><img src="data:image/png;base64, @item.Image" width="80" height="80" style="border-radius:100%;" /></td>
                     <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Id)</td>
-                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Nome)</td>
-                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Birth)</td>
                     <td style="vertical-align: middle;">@Html.DisplayFor(modelItem => item.Email)</td>
                     <td style="vertical-align: middle;">
                         @Html.ActionLink("Apagar", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })

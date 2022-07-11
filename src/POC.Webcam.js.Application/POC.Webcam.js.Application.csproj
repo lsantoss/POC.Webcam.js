@@ -17,8 +17,4 @@
     <ProjectReference Include="..\POC.Webcam.js.Infra.Crosscuting\POC.Webcam.js.Infra.Crosscuting.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

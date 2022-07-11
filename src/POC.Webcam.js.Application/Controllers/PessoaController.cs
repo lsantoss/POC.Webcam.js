@@ -1,45 +1,46 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using POC.Webcam.js.Domain.Interfaces.Repositories;
-using POC.Webcam.js.Domain.Models.Erro;
-using POC.Webcam.js.Domain.Models.Pessoa;
+using POC.Webcam.js.Application.Models.Error;
+using POC.Webcam.js.Domain.Person.Entities;
+using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Hash;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace POC.Webcam.js.Application.Controllers
 {
     public class PessoaController : Controller
     {
-        private readonly IPessoaRepository _pessoaRepository;
+        private readonly IPersonRepository _pessoaRepository;
 
-        public PessoaController(IPessoaRepository pessoaRepository)
+        public PessoaController(IPersonRepository pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var pessoas = _pessoaRepository.Listar();
+            var pessoas = await _pessoaRepository.List();
 
             return View(pessoas);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(IFormCollection collection)
         {
-            var pessoa = new PessoaViewModel();
-            TryUpdateModelAsync(pessoa);
+            var pessoa = new Person();
+            await TryUpdateModelAsync(pessoa);
 
-            pessoa.Senha = HashHelper.GerarHash(pessoa.Senha);
+            pessoa.Password = HashHelper.GerarHash(pessoa.Password);
 
-            var id = _pessoaRepository.Salvar(pessoa);
+            var id = await _pessoaRepository.Insert(pessoa);
 
             TempData["success"] = "Pessoa adicionada com sucesso!";
 
@@ -47,17 +48,17 @@ namespace POC.Webcam.js.Application.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var pessoa = _pessoaRepository.Obter(id);
+            var pessoa = await _pessoaRepository.Get(id);
 
             return View(pessoa);
         }
 
         [HttpPost]
-        public ActionResult Delete(long id, IFormCollection collection)
+        public async Task<IActionResult> Delete(long id, IFormCollection collection)
         {
-            _pessoaRepository.Deletar(id);
+            await _pessoaRepository.Delete(id);
 
             TempData["success"] = "Pessoa apagada com sucesso!";
 

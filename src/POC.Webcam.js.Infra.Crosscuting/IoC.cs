@@ -2,7 +2,7 @@
 using ElmahCore.Sql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using POC.Webcam.js.Domain.Interfaces.Repositories;
+using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.Repositories;
 using POC.Webcam.js.Infra.Settings;
 
@@ -21,7 +21,7 @@ namespace POC.Webcam.js.Infra.Crosscuting
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IPessoaRepository, PessoaRepository>();
+            services.AddTransient<IPersonRepository, PessoaRepository>();
             return services;
         }
 

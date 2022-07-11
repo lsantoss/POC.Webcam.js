@@ -1,4 +1,4 @@
-namespace POC.Webcam.js.Domain.Models.Erro
+namespace POC.Webcam.js.Application.Models.Error
 {
     public class ErrorViewModel
     {
