@@ -10,6 +10,14 @@ namespace POC.Webcam.js.Infra.Crosscutting
 {
     public static class IoC
     {
+        public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAppSettings(configuration);
+            services.AddRepositories();
+            services.AddElmahCore(configuration);
+            return services;
+        }
+
         public static IServiceCollection AddAppSettings(this IServiceCollection services, IConfiguration configuration)
         {
             var appSettings = new AppSettings();

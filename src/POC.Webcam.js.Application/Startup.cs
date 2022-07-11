@@ -19,11 +19,7 @@ namespace POC.Webcam.js.Application
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAppSettings(Configuration);
-
-            services.AddRepositories();
-
-            services.AddElmahCore(Configuration);
+            services.AddDependencies(Configuration);
 
             services.AddControllersWithViews();
         }
