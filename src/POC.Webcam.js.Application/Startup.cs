@@ -32,7 +32,7 @@ namespace POC.Webcam.js.Application
             }
             else
             {
-                app.UseExceptionHandler("/Pessoa/Error");
+                app.UseExceptionHandler("/Person/Error");
                 app.UseHsts();
             }
 
@@ -49,7 +49,7 @@ namespace POC.Webcam.js.Application
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pessoa}/{action=Index}/{id?}");
+                    pattern: "{controller=Person}/{action=Index}/{id?}");
             });
         }
     }
