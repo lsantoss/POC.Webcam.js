@@ -1,9 +1,9 @@
-﻿// Variáveis globais
-var foto = "";
-var fotoEditada = "";
-var modoCapturaImagem = "webcam";
+﻿// Global variables
+var image = "";
+var editedImage = "";
+var imageCaptureMode = "webcam";
 
-// Ao carregar a página configura a webcam
+// When loading the page configures the webcam
 window.onload = function () {
     Webcam.set({
         width: 225,
@@ -13,68 +13,68 @@ window.onload = function () {
     Webcam.attach('#divWebcam');
 }
 
-//Preenche a div com outras divs para o uso da webcam
+// Populate the div for using the webcam
 function showWebcam() {
-    modoCapturaImagem = "webcam";
+    imageCaptureMode = "webcam";
 
-    let divCameraPrincipal = document.createElement("div");
-    divCameraPrincipal.setAttribute("class", "col-md-6");
+    let divWebcamColMd6 = document.createElement("div");
+    divWebcamColMd6.setAttribute("class", "col-md-6");
 
-    let divCameraPainelDefault = document.createElement("div");
-    divCameraPainelDefault.setAttribute("class", "panel panel-default");
+    let divWebcamPanelDefault = document.createElement("div");
+    divWebcamPanelDefault.setAttribute("class", "panel panel-default");
 
-    let divCameraPainelHeading = document.createElement("div");
-    divCameraPainelHeading.setAttribute("class", "panel-heading");
-    divCameraPainelHeading.innerText = "Câmera";
+    let divWebcamPanelHeading = document.createElement("div");
+    divWebcamPanelHeading.setAttribute("class", "panel-heading");
+    divWebcamPanelHeading.innerText = "Camera";
 
-    let divCameraPainelBody = document.createElement("div");
-    divCameraPainelBody.setAttribute("class", "panel-body");
+    let divWebcamPanelBody = document.createElement("div");
+    divWebcamPanelBody.setAttribute("class", "panel-body");
 
-    let divCameraWebcam = document.createElement("div");
-    divCameraWebcam.setAttribute("id", "divWebcam");
-    divCameraWebcam.setAttribute("class", "center-block");
+    let divWebcam = document.createElement("div");
+    divWebcam.setAttribute("id", "divWebcam");
+    divWebcam.setAttribute("class", "center-block");
 
-    let divCameraInputButtonTirarFoto = document.createElement("input");
-    divCameraInputButtonTirarFoto.setAttribute("type", "button");
-    divCameraInputButtonTirarFoto.setAttribute("class", "btn btn-primary");
-    divCameraInputButtonTirarFoto.setAttribute("value", "Tirar foto");
-    divCameraInputButtonTirarFoto.setAttribute("onClick", "takePicture()");
+    let divWebcamInputButtonTakePicture = document.createElement("input");
+    divWebcamInputButtonTakePicture.setAttribute("type", "button");
+    divWebcamInputButtonTakePicture.setAttribute("class", "btn btn-primary");
+    divWebcamInputButtonTakePicture.setAttribute("value", "Take picture");
+    divWebcamInputButtonTakePicture.setAttribute("onClick", "takePicture()");
 
-    divCameraPrincipal.appendChild(divCameraPainelDefault);
-    divCameraPainelDefault.appendChild(divCameraPainelHeading);
-    divCameraPainelDefault.appendChild(divCameraPainelBody);
-    divCameraPainelBody.appendChild(divCameraWebcam);
-    divCameraPainelBody.appendChild(document.createElement("br"));
-    divCameraPainelBody.appendChild(divCameraInputButtonTirarFoto);
+    divWebcamColMd6.appendChild(divWebcamPanelDefault);
+    divWebcamPanelDefault.appendChild(divWebcamPanelHeading);
+    divWebcamPanelDefault.appendChild(divWebcamPanelBody);
+    divWebcamPanelBody.appendChild(divWebcam);
+    divWebcamPanelBody.appendChild(document.createElement("br"));
+    divWebcamPanelBody.appendChild(divWebcamInputButtonTakePicture);
 
-    let divResultadoPrincipal = document.createElement("div");
-    divResultadoPrincipal.setAttribute("class", "col-md-6");
+    let divResultColMd6 = document.createElement("div");
+    divResultColMd6.setAttribute("class", "col-md-6");
 
-    let divResultadoPainelDefault = document.createElement("div");
-    divResultadoPainelDefault.setAttribute("class", "panel panel-default");
+    let divResultPanelDefault = document.createElement("div");
+    divResultPanelDefault.setAttribute("class", "panel panel-default");
 
-    let divResultadoPainelHeading = document.createElement("div");
-    divResultadoPainelHeading.setAttribute("class", "panel-heading");
-    divResultadoPainelHeading.innerText = "Arte final";
+    let divResultPanelHeading = document.createElement("div");
+    divResultPanelHeading.setAttribute("class", "panel-heading");
+    divResultPanelHeading.innerText = "Final picture";
 
-    let divResultadoPainelBody = document.createElement("div");
-    divResultadoPainelBody.setAttribute("class", "panel-body");
+    let divResultPanelBody = document.createElement("div");
+    divResultPanelBody.setAttribute("class", "panel-body");
 
-    let divResultadoImagem = document.createElement("div");
-    divResultadoImagem.setAttribute("id", "imageResult");
-    divResultadoImagem.style.cssText = "height:160px;";
+    let divResultImage = document.createElement("div");
+    divResultImage.setAttribute("id", "imageResult");
+    divResultImage.style.cssText = "height:160px;";
 
-    divResultadoPrincipal.appendChild(divResultadoPainelDefault);
-    divResultadoPainelDefault.appendChild(divResultadoPainelHeading);
-    divResultadoPainelDefault.appendChild(divResultadoPainelBody);
-    divResultadoPainelBody.appendChild(divResultadoImagem);
+    divResultColMd6.appendChild(divResultPanelDefault);
+    divResultPanelDefault.appendChild(divResultPanelHeading);
+    divResultPanelDefault.appendChild(divResultPanelBody);
+    divResultPanelBody.appendChild(divResultImage);
 
     document.getElementById('divChoice').innerHTML = "";
-    document.getElementById('divChoice').appendChild(divCameraPrincipal);
-    document.getElementById('divChoice').appendChild(divResultadoPrincipal);
+    document.getElementById('divChoice').appendChild(divWebcamColMd6);
+    document.getElementById('divChoice').appendChild(divResultColMd6);
 
-    foto = "";
-    fotoEditada = "";
+    image = "";
+    editedImage = "";
     document.getElementById('imageBase64StringField').value = "";
 
     Webcam.set({
@@ -85,11 +85,11 @@ function showWebcam() {
     Webcam.attach('#divWebcam');
 }
 
-// Preenche a div com um input type file, para escolha de uma imagem local
+// Populate the div for using the input type file
 function showInputFile() {
     Webcam.reset();
 
-    modoCapturaImagem = "inputFile";
+    imageCaptureMode = "inputFile";
 
     let divPainelDefault = document.createElement("div");
     divPainelDefault.setAttribute("class", "panel panel-default");
@@ -99,13 +99,13 @@ function showInputFile() {
 
     let divPainelHeading = document.createElement("div");
     divPainelHeading.setAttribute("class", "panel-heading");
-    divPainelHeading.innerText = "Adicionar imagem local";
+    divPainelHeading.innerText = "Upload image";
 
     let divPainelBody = document.createElement("div");
     divPainelBody.setAttribute("class", "panel-body");
 
     let p = document.createElement("p");
-    p.innerText = "Recomendamos que escolha uma imagem de tamanho 140x180 e de formato .png";
+    p.innerText = "We recommend choosing an image of 140x180 size and .png format";
 
     let divUploadBtnWrapper = document.createElement("div");
     divUploadBtnWrapper.setAttribute("class", "upload-btn-wrapper");
@@ -121,12 +121,12 @@ function showInputFile() {
     let brBtnUpload = document.createElement("br");
 
     let pBtnUpload = document.createElement("p");
-    pBtnUpload.innerHTML = "Arraste a imagem aqui<br/> ou <br/> Clique para encontrar uma<br/> no dispositivo";
+    pBtnUpload.innerHTML = "Drag the image here<br/> or <br/> Click to find one<br/> on your device";
 
     let inputFile = document.createElement("input");
     inputFile.setAttribute("type", "file");
     inputFile.setAttribute("accept", "image/*");
-    inputFile.setAttribute("onchange", "obterArquivoInputFile(this)");
+    inputFile.setAttribute("onchange", "getFileFromInputFile(this)");
 
     divPainelDefault.appendChild(divColMd12);
     divColMd12.appendChild(divPainelHeading);
@@ -142,41 +142,41 @@ function showInputFile() {
     document.getElementById('divChoice').innerHTML = "";
     document.getElementById('divChoice').appendChild(divPainelDefault);
 
-    foto = "";
-    fotoEditada = "";
+    image = "";
+    editedImage = "";
     document.getElementById('imageBase64StringField').value = "";
 }
 
-// Captura imagem ao clicar no botão "Tirar foto"
-// Mostra imageResult na página
-// #imageBase64StringField recebe o base64String tratado da ultima foto tirada
+// Capture image by clicking "Take Picture" button
+// Show imageResult on page
+// #imageBase64StringField receives the treated base64String of the last photo taken
 function takePicture() {
     Webcam.snap(
-        function (imagemBase64String) {
-            foto = imagemBase64String;
-            fotoEditada = imagemBase64String;
-            mostarImagemModalEdicao(imagemBase64String);
+        function (imageBase64String) {
+            image = imageBase64String;
+            editedImage = imageBase64String;
+            showModalImageCustomization(imageBase64String);
         }
     );
 }
 
-// Cria elemento e mostra imagem no modal de edição
-function mostarImagemModalEdicao(imagemBase64String) {
+// Create element and show image in edit modal
+function showModalImageCustomization(imageBase64String) {
     let img = document.createElement("img");
-    img.setAttribute("src", `${imagemBase64String}`);
+    img.setAttribute("src", `${imageBase64String}`);
     img.setAttribute("class", "mt-4 mb-2");
     img.style.cssText = "width:55%; heigth:55%; margin-left:110px;";
 
-    document.getElementById('modalBodyPersonalizacaoImagem').innerHTML = "";
-    document.getElementById('modalBodyPersonalizacaoImagem').appendChild(img);
+    document.getElementById('bodyModalImageCustomization').innerHTML = "";
+    document.getElementById('bodyModalImageCustomization').appendChild(img);
 
     $('#modalImageCustomization').modal('show');
 }
 
-// Rotação de imagem para direita
+// Right image rotation
 function turnRight() {
     var imgOriginal = new Image();
-    imgOriginal.src = fotoEditada;
+    imgOriginal.src = editedImage;
 
     var canvas = document.createElement("canvas");
 
@@ -198,26 +198,26 @@ function turnRight() {
     var ctx = canvas.getContext("2d");
     ctx.translate(canvas.width / 2, canvas.height / 2);
 
-    // cria imagem inicial
+    // create splash image
     var image = document.createElement("img");
     image.src = imgOriginal.src;
 
-    // limpa canvas, rotaciona e desenha imagem no centro
+    // clear canvas, rotate and draw image in center
     ctx.clearRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height * 2);
     ctx.rotate(90 * Math.PI / 180);
     ctx.drawImage(image, -image.width / 2, -image.width / 2);
 
-    // cria nova imagem no html
+    // create new image in html
     var img = document.createElement('img');
     img.src = canvas.toDataURL("image/png");
-    fotoEditada = img.src;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = img.src;
+    showModalImageCustomization(editedImage);
 }
 
-// Rotação de imagem para esquerda
+// Left image rotation
 function turnLeft() {
     var imgOriginal = new Image();
-    imgOriginal.src = fotoEditada;
+    imgOriginal.src = editedImage;
 
     var canvas = document.createElement("canvas");
 
@@ -239,26 +239,26 @@ function turnLeft() {
     var ctx = canvas.getContext("2d");
     ctx.translate(canvas.width / 2, canvas.height / 2);
 
-    // cria imagem inicial
+    // create splash image
     var image = document.createElement("img");
     image.src = imgOriginal.src;
 
-    // limpa canvas, rotaciona e desenha imagem no centro
+    // clear canvas, rotate and draw image in center
     ctx.clearRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height * 2);
     ctx.rotate(-90 * Math.PI / 180);
     ctx.drawImage(image, -image.width / 2, -image.width / 2);
 
-    // cria nova imagem no html
+    // create new image in html
     var img = document.createElement('img');
     img.src = canvas.toDataURL("image/png");
-    fotoEditada = img.src;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = img.src;
+    showModalImageCustomization(editedImage);
 }
 
-/////// Aumenta o brilho da imagem
+// Increases image brightness
 function increaseBrightness() {
     var imgOriginal = new Image();
-    imgOriginal.src = fotoEditada;
+    imgOriginal.src = editedImage;
 
     var canvas = document.createElement("canvas");
     canvas.width = imgOriginal.width;
@@ -266,25 +266,25 @@ function increaseBrightness() {
 
     var ctx = canvas.getContext("2d");
 
-    // cria imagem inicial
+    // create splash image
     var image = document.createElement("img");
     image.src = imgOriginal.src;
 
-    // limpa canvas, rotaciona e aplica brilho
+    // clean canvas and apply more brightness to the image
     ctx.filter = "brightness(105%)";
     ctx.drawImage(image, 0, 0);
 
-    // cria nova imagem no html
+    // create new image in html
     var img = document.createElement('img');
     img.src = canvas.toDataURL("image/png");
-    fotoEditada = img.src;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = img.src;
+    showModalImageCustomization(editedImage);
 }
-
-// Diminui o brilho da imagem
+showInputFileModifications
+// Decrease the brightness of the image
 function decreaseBrightness() {
     var imgOriginal = new Image();
-    imgOriginal.src = fotoEditada;
+    imgOriginal.src = editedImage;
 
     var canvas = document.createElement("canvas");
     canvas.width = imgOriginal.width;
@@ -292,25 +292,25 @@ function decreaseBrightness() {
 
     var ctx = canvas.getContext("2d");
 
-    // cria imagem inicial
+    // create splash image
     var image = document.createElement("img");
     image.src = imgOriginal.src;
 
-    // limpa canvas, rotaciona e aplica brilho
+    // clean canvas and apply less brightness to the image
     ctx.filter = "brightness(95%)";
     ctx.drawImage(image, 0, 0);
 
-    // cria nova imagem no html
+    // create new image in html
     var img = document.createElement('img');
     img.src = canvas.toDataURL("image/png");
-    fotoEditada = img.src;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = img.src;
+    showModalImageCustomization(editedImage);
 }
 
-// Imagem para preto e branco
+// Apply black and white filter on image
 function addFilterBlackWhite() {
     var imgOriginal = new Image();
-    imgOriginal.src = fotoEditada;
+    imgOriginal.src = editedImage;
 
     var canvas = document.createElement("canvas");
     canvas.width = imgOriginal.width;
@@ -318,51 +318,51 @@ function addFilterBlackWhite() {
 
     var ctx = canvas.getContext("2d");
 
-    // cria imagem inicial
+    // create splash image
     var image = document.createElement("img");
     image.src = imgOriginal.src;
 
-    // limpa canvas, rotaciona e aplica brilho
+    // clean canvas and apply black and white filter on image
     ctx.filter = "grayscale(100%)";
     ctx.drawImage(image, 0, 0);
 
-    // cria nova imagem no html
+    // create new image in html
     var img = document.createElement('img');
     img.src = canvas.toDataURL("image/png");
-    fotoEditada = img.src;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = img.src;
+    showModalImageCustomization(editedImage);
 }
 
-// Restaura a imagem original
+// Restore the original image
 function undoChanges() {
-    fotoEditada = foto;
-    mostarImagemModalEdicao(fotoEditada);
+    editedImage = image;
+    showModalImageCustomization(editedImage);
 }
 
-// Descarta todas as modificações feitas na imagem
+// Discard all changes made to the image
 function cancelModifications() {
-    foto = "";
-    fotoEditada = "";
-    document.getElementById('modalBodyPersonalizacaoImagem').innerHTML = "";
+    image = "";
+    editedImage = "";
+    document.getElementById('bodyModalImageCustomization').innerHTML = "";
 }
 
-// Mostra resultado da imagem após ser editada com filtro no modal
-// De acordo com a variável "modoCapturaImagem" a função que cria os elementos será chamada
+// Shows the result of the image after being edited with a filter in the modal
+// According to the variable "imageCaptureMode" the function that creates the elements will be called
 function confirmModifications() {
-    if (modoCapturaImagem === "webcam") {
-        mostrarModificacoesWebcam();
+    if (imageCaptureMode === "webcam") {
+        showWebcamModifications();
     }
     else {
-        mostrarModificacoesInputFile();
+        showInputFileModifications();
 	}
 }
 
-// Cria elementos com o resultado da edição no formulário - Webcam
-function mostrarModificacoesWebcam() {
+// Create elements with the result of editing the form - Webcam
+function showWebcamModifications() {
     let br1 = document.createElement("br");
 
     let img = document.createElement("img");
-    img.setAttribute("src", `${fotoEditada}`);
+    img.setAttribute("src", `${editedImage}`);
     img.setAttribute("class", "center-block");
     img.setAttribute("width", "225px");
     img.setAttribute("height", "175px");
@@ -374,8 +374,8 @@ function mostrarModificacoesWebcam() {
     let inputButton = document.createElement("input");
     inputButton.setAttribute("type", "button");
     inputButton.setAttribute("class", "btn btn-primary");
-    inputButton.setAttribute("value", "Descartar");
-    inputButton.setAttribute("onClick", "descartarFoto()");
+    inputButton.setAttribute("value", "Discard");
+    inputButton.setAttribute("onClick", "discardPhoto()");
 
     document.getElementById('imageResult').innerHTML = "";
     document.getElementById('imageResult').appendChild(br1);
@@ -384,37 +384,37 @@ function mostrarModificacoesWebcam() {
     document.getElementById('imageResult').appendChild(br3);
     document.getElementById('imageResult').appendChild(br4);
     document.getElementById('imageResult').appendChild(inputButton);
-    document.getElementById('imageBase64StringField').value = fotoEditada.split(",")[1];
+    document.getElementById('imageBase64StringField').value = editedImage.split(",")[1];
 }
 
-// Cria elementos com o resultado da edição no formulário - InputFile
-function mostrarModificacoesInputFile() {
+// Create elements with the result of editing the form - InputFile
+function showInputFileModifications() {
     let img = document.createElement("img");
-    img.setAttribute("src", `${fotoEditada}`);
+    img.setAttribute("src", `${editedImage}`);
     img.style.cssText = "width:200px; height:90%;";
 
     document.getElementById('btnInputFile').innerHTML = "";
     document.getElementById('btnInputFile').appendChild(img);
-    document.getElementById('imageBase64StringField').value = fotoEditada.split(",")[1];
+    document.getElementById('imageBase64StringField').value = editedImage.split(",")[1];
 }
 
-// Limpa a div imageResult e do input imageBase64StringField
-function descartarFoto() {
-    foto = "";
-    fotoEditada = "";
+// Clear the imageResult div and the imageBase64StringField input
+function discardPhoto() {
+    image = "";
+    editedImage = "";
     document.getElementById('imageResult').innerHTML = "";
     document.getElementById('imageBase64StringField').value = "";
 }
 
-// Obtem arquivo selecionado no input file
-// #imageBase64StringField recebe o base64String tratado da ultima foto tirada
-function obterArquivoInputFile(elemento) {
+// Get selected file in input file
+// #imageBase64StringField receives the treated base64String of the last photo selected
+function getFileFromInputFile(elemento) {
     const file = elemento.files[0];
     const reader = new FileReader();
     reader.onloadend = function () {
-        foto = reader.result;
-        fotoEditada = reader.result;
-        mostarImagemModalEdicao(foto);
+        image = reader.result;
+        editedImage = reader.result;
+        showModalImageCustomization(image);
     }
     reader.readAsDataURL(file);
 }
