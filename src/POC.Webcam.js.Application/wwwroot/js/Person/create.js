@@ -16,6 +16,8 @@ window.onload = function () {
 // Populate the div for using the webcam
 function showWebcam() {
     imageCaptureMode = "webcam";
+    document.getElementById("radioWebcam").checked = true;
+    document.getElementById("radioInputFile").checked = false;
 
     let divWebcamColMd6 = document.createElement("div");
     divWebcamColMd6.setAttribute("class", "col-md-6");
@@ -90,6 +92,8 @@ function showInputFile() {
     Webcam.reset();
 
     imageCaptureMode = "inputFile";
+    document.getElementById("radioWebcam").checked = false;
+    document.getElementById("radioInputFile").checked = true;
 
     let divPainelDefault = document.createElement("div");
     divPainelDefault.setAttribute("class", "panel panel-default");
