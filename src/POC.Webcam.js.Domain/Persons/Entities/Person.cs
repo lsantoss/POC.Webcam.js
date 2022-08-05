@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace POC.Webcam.js.Domain.Person.Entities
+namespace POC.Webcam.js.Domain.Persons.Entities
 {
     public class Person
     {

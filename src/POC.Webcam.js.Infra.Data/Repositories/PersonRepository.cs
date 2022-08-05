@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using POC.Webcam.js.Domain.Person.Entities;
-using POC.Webcam.js.Domain.Person.Interfaces.Repositories;
+using POC.Webcam.js.Domain.Persons.Entities;
+using POC.Webcam.js.Domain.Persons.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.DataContexts;
 using POC.Webcam.js.Infra.Data.Repositories.Queries;
 using System.Collections.Generic;
