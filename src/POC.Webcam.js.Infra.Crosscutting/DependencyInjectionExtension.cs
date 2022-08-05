@@ -9,7 +9,7 @@ using POC.Webcam.js.Infra.Settings;
 
 namespace POC.Webcam.js.Infra.Crosscutting
 {
-    public static class IoC
+    public static class DependencyInjectionExtension
     {
         public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration)
         {
