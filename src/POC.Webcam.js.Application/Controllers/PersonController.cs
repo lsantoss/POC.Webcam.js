@@ -37,9 +37,9 @@ namespace POC.Webcam.js.Application.Controllers
             var person = new Person();
             await TryUpdateModelAsync(person);
 
-            person.Password = HashHelper.GenerateHash(person.Password);
+            person.CypherPassword();
 
-            _ = await _personRepository.Insert(person);
+            await _personRepository.Insert(person);
 
             TempData["toastr-success"] = "Person added successfully!";
 

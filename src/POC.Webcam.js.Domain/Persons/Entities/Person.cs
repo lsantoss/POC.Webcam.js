@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POC.Webcam.js.Infra.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace POC.Webcam.js.Domain.Persons.Entities
@@ -35,5 +36,7 @@ namespace POC.Webcam.js.Domain.Persons.Entities
         [Display(Name = "Image", Prompt = "Enter the image")]
         [Required(ErrorMessage = "The Image field is required")]
         public string Image { get; set; }
+
+        public void CypherPassword() => Password = HashHelper.GenerateHash(Password);
     }
 }

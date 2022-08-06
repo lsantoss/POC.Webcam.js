@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\POC.Webcam.js.Infra\POC.Webcam.js.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
