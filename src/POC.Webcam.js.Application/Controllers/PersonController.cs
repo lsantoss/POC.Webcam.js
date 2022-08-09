@@ -21,7 +21,7 @@ namespace POC.Webcam.js.Application.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var personList = await _personRepository.List();
+            var personList = await _personRepository.ListAsync();
             return View(personList);
         }
 
@@ -35,28 +35,37 @@ namespace POC.Webcam.js.Application.Controllers
         public async Task<IActionResult> Create(IFormCollection collection)
         {
             var person = new Person();
-            await TryUpdateModelAsync(person);
+            var modelIsValid = await TryUpdateModelAsync(person);
 
-            person.CypherPassword();
+            if (modelIsValid)
+            {
+                person.CypherPassword();
 
-            await _personRepository.Insert(person);
+                await _personRepository.InsertAsync(person);
 
-            TempData["toastr-success"] = "Person added successfully!";
+                TempData["toastr-success"] = "Person added successfully!";
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["toastr-error"] = "Error getting form data!";
+
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(long id)
         {
-            var person = await _personRepository.Get(id);
+            var person = await _personRepository.GetAsync(id);
             return View(person);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(long id, IFormCollection collection)
         {
-            await _personRepository.Delete(id);
+            await _personRepository.DeleteAsync(id);
 
             TempData["toastr-success"] = "Person successfully deleted!";
 

@@ -1,11 +1,11 @@
-﻿using POC.Webcam.js.Infra.Settings;
-using System;
+﻿using POC.Webcam.js.Infra.Data.Interfaces.DataContexts;
+using POC.Webcam.js.Infra.Settings;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace POC.Webcam.js.Infra.Data.DataContexts
 {
-    public class DataContext : IDisposable
+    public class DataContext : IDataContext
     {
         public SqlConnection Connection { get; }
 

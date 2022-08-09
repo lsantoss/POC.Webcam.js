@@ -17,7 +17,7 @@ namespace POC.Webcam.js.Test.Tools.Base.Common
 
         public DatabaseTest() : base()
         {
-            var configuration = GetConfigurationApi();
+            var configuration = GetConfiguration();
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             _connectionString = configuration["ConnectionString"];

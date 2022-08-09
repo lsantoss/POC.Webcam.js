@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using POC.Webcam.js.Domain.Persons.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.DataContexts;
+using POC.Webcam.js.Infra.Data.Interfaces.DataContexts;
 using POC.Webcam.js.Infra.Data.Repositories;
 using POC.Webcam.js.Infra.Settings;
 
@@ -31,7 +32,7 @@ namespace POC.Webcam.js.Infra.Crosscutting
 
         public static IServiceCollection AddDataContexts(this IServiceCollection services)
         {
-            services.AddScoped<DataContext>();
+            services.AddScoped<IDataContext, DataContext>();
             return services;
         }
 

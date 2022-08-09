@@ -6,11 +6,10 @@ namespace POC.Webcam.js.Domain.Persons.Interfaces.Repositories
 {
     public interface IPersonRepository
     {
-        Task<long> Insert(Person person);
-        Task Update(Person person);
-        Task Delete(long id);
+        Task<long> InsertAsync(Person person);
+        Task DeleteAsync(long id);
 
-        Task<Person> Get(long id);
-        Task<List<Person>> List();
+        Task<Person> GetAsync(long id);
+        Task<List<Person>> ListAsync();
     }
 }

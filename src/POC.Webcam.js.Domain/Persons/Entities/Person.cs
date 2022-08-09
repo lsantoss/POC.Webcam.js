@@ -8,7 +8,7 @@ namespace POC.Webcam.js.Domain.Persons.Entities
     {
         [Display(Name = "Id", Prompt = "Enter the id")]
         [Required(ErrorMessage = "The Id field is required")]
-        [Range(1, long.MaxValue, ErrorMessage = "The Id field must be greater than or equal to 1 and less than 9223372036854775807.")]
+        [Range(0, long.MaxValue, ErrorMessage = "The Id field must be greater than or equal to 0 and less than 9223372036854775807.")]
         public long Id { get; set; }
 
         [Display(Name = "Name", Prompt = "Enter the name")]
@@ -30,7 +30,7 @@ namespace POC.Webcam.js.Domain.Persons.Entities
         [Display(Name = "Password", Prompt = "Enter the password")]
         [Required(ErrorMessage = "The Password field is required")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "The Password field cannot exceed 50 characters.")]
+        [StringLength(100, ErrorMessage = "The Password field cannot exceed 100 characters.")]
         public string Password { get; set; }
 
         [Display(Name = "Image", Prompt = "Enter the image")]

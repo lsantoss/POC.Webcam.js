@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using DependencyInjectionExtensionApi = POC.Webcam.js.Infra.Crosscutting.DependencyInjectionExtension;
+using POC.Webcam.js.Infra.Crosscutting;
 
 namespace POC.Webcam.js.Test.Tools
 {
@@ -18,12 +18,12 @@ namespace POC.Webcam.js.Test.Tools
 
             _configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, false).AddEnvironmentVariables().Build();
 
-            _services = DependencyInjectionExtensionApi.AddDependencies(_services, _configuration);
+            _services = DependencyInjectionExtension.AddDependencies(_services, _configuration);
 
             _serviceProvider = _services.BuildServiceProvider();
         }
 
-        protected IConfiguration GetConfigurationApi() => _configuration;
+        protected IConfiguration GetConfiguration() => _configuration;
         protected IServiceCollection GetServices() => _services;
         protected T GetServices<T>() => (T)_serviceProvider.GetService(typeof(T));
     }
