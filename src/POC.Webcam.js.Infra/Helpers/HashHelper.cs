@@ -6,14 +6,20 @@ namespace POC.Webcam.js.Infra.Helpers
     {
         private const HashType _hashType = HashType.SHA384;
 
-        public static string GenerateHash(string password, int workFactor = 11)
+        public static string GenerateHash(string text, int workFactor = 11)
         {
-            return BCrypt.Net.BCrypt.EnhancedHashPassword(password, workFactor, _hashType);
+            if (text == null)
+                return null;
+
+            return BCrypt.Net.BCrypt.EnhancedHashPassword(text, workFactor, _hashType);
         }
 
-        public static bool ValidateHash(string password, string hash)
+        public static bool ValidateHash(string text, string hash)
         {
-            return BCrypt.Net.BCrypt.EnhancedVerify(password, hash, _hashType);
+            if(text == null || hash == null)
+                return false;
+
+            return BCrypt.Net.BCrypt.EnhancedVerify(text, hash, _hashType);
         }
     }
 }

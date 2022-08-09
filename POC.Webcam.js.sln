@@ -27,7 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Domain", "4.2 - Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Infra", "4.3 - Infra", "{39466307-BB40-4912-965B-E2FDB35B3BD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.Webcam.js.Test.Tools", "test\POC.Webcam.js.Test.Tools\POC.Webcam.js.Test.Tools.csproj", "{B52C6304-79C2-4F6C-85F8-29330A49BF6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Test.Tools", "test\POC.Webcam.js.Test.Tools\POC.Webcam.js.Test.Tools.csproj", "{B52C6304-79C2-4F6C-85F8-29330A49BF6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Domain.Test.Unit", "test\POC.Webcam.js.Domain.Test.Unit\POC.Webcam.js.Domain.Test.Unit.csproj", "{8F823847-79B6-4D16-9F07-A622FD32D390}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra.Data.Test.Integration", "test\POC.Webcam.js.Infra.Data.Test.Integration\POC.Webcam.js.Infra.Data.Test.Integration.csproj", "{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC.Webcam.js.Infra.Test.Unit", "test\POC.Webcam.js.Infra.Test.Unit\POC.Webcam.js.Infra.Test.Unit.csproj", "{60EBD33B-53E6-4DCB-AD01-2672148F7A12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +65,18 @@ Global
 		{B52C6304-79C2-4F6C-85F8-29330A49BF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B52C6304-79C2-4F6C-85F8-29330A49BF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B52C6304-79C2-4F6C-85F8-29330A49BF6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F823847-79B6-4D16-9F07-A622FD32D390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F823847-79B6-4D16-9F07-A622FD32D390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F823847-79B6-4D16-9F07-A622FD32D390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F823847-79B6-4D16-9F07-A622FD32D390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EBD33B-53E6-4DCB-AD01-2672148F7A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EBD33B-53E6-4DCB-AD01-2672148F7A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EBD33B-53E6-4DCB-AD01-2672148F7A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EBD33B-53E6-4DCB-AD01-2672148F7A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +91,9 @@ Global
 		{38C7B06A-8565-4331-BBDB-2D24656966CE} = {9B718081-A199-4EA2-A106-013930B19373}
 		{39466307-BB40-4912-965B-E2FDB35B3BD7} = {9B718081-A199-4EA2-A106-013930B19373}
 		{B52C6304-79C2-4F6C-85F8-29330A49BF6D} = {813D3F35-39C7-4DCC-876E-53707ACF5CFE}
+		{8F823847-79B6-4D16-9F07-A622FD32D390} = {38C7B06A-8565-4331-BBDB-2D24656966CE}
+		{16FD2BC6-C576-4AC6-AFEE-3BBE7262711F} = {39466307-BB40-4912-965B-E2FDB35B3BD7}
+		{60EBD33B-53E6-4DCB-AD01-2672148F7A12} = {39466307-BB40-4912-965B-E2FDB35B3BD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE2A50A5-06E9-4F39-8DEB-228FD0E07270}
