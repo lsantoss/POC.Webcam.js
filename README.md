@@ -1,16 +1,35 @@
-# Form + Webcam.js
+# POC.Webcam.js
 
-<h3>Aplicação:</h3>
-<p>Essa aplicação contém um exemplo de crud básico com a possibilidade de inclusão de imagem</p>
-<p>Banco de Dados: SQL Server</p>
-<p>Biblioteca: Dapper</p>
-<p>Biblioteca: BCrypt.Net-Next</p>
-<p>Biblioteca: Webcam.js</p>
-<p>Biblioteca: Toastr</p>
+## Application:
+This application contains an example of crud using the Webcam.js library to capture images, and it is also possible to upload images
 
-<h3>Detalhes:</h3>
-<p>Possibilidades de imagens</p>
-<ul>
-  <li>Imagem capturada via Webcam</li>
-  <li>Upload de imagem local</li>
-</ul>
+---
+
+## Frameworks:
+- .Net 5
+
+---
+
+## Libraries (only most important):
+- coverlet.collector
+- Dapper
+- BCrypt.Net-Next
+- ElmahCore
+- ElmahCore.Sql
+- Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+- Microsoft.Extensions.Configuration.Abstractions
+- Microsoft.Extensions.Configuration.Binder
+- Microsoft.Extensions.Configuration.EnvironmentVariables
+- Microsoft.Extensions.Configuration.Json
+- Microsoft.Extensions.DependencyInjection
+- Microsoft.Extensions.DependencyInjection.Abstractions
+- Microsoft.NET.Test.Sdk
+- Microsoft.VisualStudio.Azure.Containers.Tools.Targets
+- Microsoft.VisualStudio.Web.CodeGeneration.Design
+- Newtonsoft.Json
+- NUnit
+- NUnit.Analyzers
+- NUnit3TestAdapter
+- System.Data.SqlClient
+- Toastr
+- Webcam.js

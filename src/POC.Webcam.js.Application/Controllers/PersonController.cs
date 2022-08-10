@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using POC.Webcam.js.Application.Models.Error;
 using POC.Webcam.js.Domain.Persons.Entities;
 using POC.Webcam.js.Domain.Persons.Interfaces.Repositories;
-using POC.Webcam.js.Infra.Helpers;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
