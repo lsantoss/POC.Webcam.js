@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using POC.Webcam.js.Domain.Persons.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.DataContexts;
-using POC.Webcam.js.Infra.Data.Interfaces.DataContexts;
+using POC.Webcam.js.Infra.Data.DataContexts.Interfaces;
 using POC.Webcam.js.Infra.Data.Repositories;
 using POC.Webcam.js.Infra.Settings;
 

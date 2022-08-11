@@ -1,4 +1,4 @@
-﻿using POC.Webcam.js.Infra.Data.Interfaces.DataContexts;
+﻿using POC.Webcam.js.Infra.Data.DataContexts.Interfaces;
 using POC.Webcam.js.Infra.Settings;
 using System.Data;
 using System.Data.SqlClient;
