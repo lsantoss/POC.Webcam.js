@@ -1,4 +1,4 @@
-﻿namespace POC.Webcam.js.Infra.Data.Repositories.Queries
+﻿namespace POC.Webcam.js.Infra.Data.Persons.Queries
 {
     public static class PersonQueries
     {

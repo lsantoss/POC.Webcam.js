@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Threading.Tasks;
 
-namespace POC.Webcam.js.Infra.Data.Test.Integration.Repositories
+namespace POC.Webcam.js.Infra.Data.Test.Integration.Persons.Repositories
 {
     internal class PersonRepositoryTest : IntegrationTest
     {

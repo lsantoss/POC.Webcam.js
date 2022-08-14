@@ -2,13 +2,13 @@
 using POC.Webcam.js.Domain.Persons.Entities;
 using POC.Webcam.js.Domain.Persons.Interfaces.Repositories;
 using POC.Webcam.js.Infra.Data.DataContexts.Interfaces;
-using POC.Webcam.js.Infra.Data.Repositories.Queries;
+using POC.Webcam.js.Infra.Data.Persons.Queries;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace POC.Webcam.js.Infra.Data.Repositories
+namespace POC.Webcam.js.Infra.Data.Persons.Repositories
 {
     public class PersonRepository : IPersonRepository
     {
