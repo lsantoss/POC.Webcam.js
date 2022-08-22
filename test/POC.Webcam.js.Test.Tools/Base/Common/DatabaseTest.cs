@@ -9,25 +9,7 @@ namespace POC.Webcam.js.Test.Tools.Base.Common
 {
     public class DatabaseTest : BaseTest
     {
-        private readonly string _connectionString;
-        private readonly string _connectionStringReal;
-        private readonly string _scriptCreateDatabasePath;
-        private readonly string _scriptCreateTablesPath;
-        private readonly string _scriptDropTablesPath;
-
-        public DatabaseTest() : base()
-        {
-            var configuration = GetConfiguration();
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-            _connectionString = configuration["ConnectionString"];
-            _connectionStringReal = configuration["ConnectionStringReal"];
-            _scriptCreateDatabasePath = $@"{baseDirectory}\Sql\CreateDatabase.sql";
-            _scriptCreateTablesPath = $@"{baseDirectory}\Sql\CreateTablesAndProcedures.sql";
-            _scriptDropTablesPath = $@"{baseDirectory}\Sql\DropTablesAndProcedures.sql";
-
-            CreateDatabase();
-        }
+        public DatabaseTest() : base() => CreateDatabase();
 
         [OneTimeSetUp]
         protected override void OneTimeSetUp() => InitializeData();
@@ -58,8 +40,16 @@ namespace POC.Webcam.js.Test.Tools.Base.Common
         {
             try
             {
-                using var streamReader = new StreamReader(_scriptCreateDatabasePath);
-                using var connection = new SqlConnection(_connectionStringReal);
+                var configuration = GetConfiguration();
+
+                var connectionStringDefaultDatabase = configuration["ConnectionStringDefaultDatabase"];
+
+                var scriptCreateDatabasePath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Sql\CreateDatabase.sql";
+
+                using var streamReader = new StreamReader(scriptCreateDatabasePath);
+
+                using var connection = new SqlConnection(connectionStringDefaultDatabase);
+
                 connection.Execute(streamReader.ReadToEnd());
             }
             catch (Exception ex)
@@ -72,12 +62,18 @@ namespace POC.Webcam.js.Test.Tools.Base.Common
         {
             try
             {
-                using var streamReader = new StreamReader(_scriptCreateTablesPath);
+                var configuration = GetConfiguration();
+
+                var connectionString = configuration["ConnectionString"];
+
+                var scriptCreateTablesPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Sql\CreateTablesAndProcedures.sql";
+
+                using var streamReader = new StreamReader(scriptCreateTablesPath);
 
                 var scripts = streamReader.ReadToEnd().Split(
                     new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
 
-                using var connection = new SqlConnection(_connectionString);
+                using var connection = new SqlConnection(connectionString);
 
                 foreach (var script in scripts)
                     connection.Execute(script);
@@ -92,8 +88,16 @@ namespace POC.Webcam.js.Test.Tools.Base.Common
         {
             try
             {
-                using var streamReader = new StreamReader(_scriptDropTablesPath);
-                using var connection = new SqlConnection(_connectionString);
+                var configuration = GetConfiguration();
+
+                var connectionString = configuration["ConnectionString"];
+
+                var scriptDropTablesPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Sql\DropTablesAndProcedures.sql";
+
+                using var streamReader = new StreamReader(scriptDropTablesPath);
+
+                using var connection = new SqlConnection(connectionString);
+
                 connection.Execute(streamReader.ReadToEnd());
             }
             catch (Exception ex)
