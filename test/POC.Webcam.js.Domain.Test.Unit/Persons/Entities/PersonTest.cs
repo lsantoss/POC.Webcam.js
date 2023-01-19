@@ -13,13 +13,16 @@ namespace POC.Webcam.js.Domain.Test.Unit.Persons.Entities
         [TestCase(-1)]
         public void Id_Invalid(long id)
         {
+            //Arrange
             var person = MockData.Person;
             person.Id = id;
 
+            //Act
             var validationResult = ValidateModelHelper.ValidateModelWithAnotations(person);
 
             TestContext.WriteLine(validationResult.ToJson());
 
+            //Assert
             Assert.Multiple(() =>
             {
                 Assert.That(validationResult, Is.Not.Null);
@@ -33,13 +36,16 @@ namespace POC.Webcam.js.Domain.Test.Unit.Persons.Entities
         [TestCase(StringsWithPredefinedSizes.StringWith51Caracters)]
         public void Name_Invalid(string name)
         {
+            //Arrange
             var person = MockData.Person;
             person.Name = name;
 
+            //Act
             var validationResult = ValidateModelHelper.ValidateModelWithAnotations(person);
 
             TestContext.WriteLine(validationResult.ToJson());
 
+            //Assert
             Assert.Multiple(() =>
             {
                 Assert.That(validationResult, Is.Not.Null);
@@ -53,13 +59,16 @@ namespace POC.Webcam.js.Domain.Test.Unit.Persons.Entities
         [TestCase(StringsWithPredefinedSizes.StringWith51Caracters)]
         public void Email_Invalid(string email)
         {
+            //Arrange
             var person = MockData.Person;
             person.Email = email;
 
+            //Act
             var validationResult = ValidateModelHelper.ValidateModelWithAnotations(person);
 
             TestContext.WriteLine(validationResult.ToJson());
 
+            //Assert
             Assert.Multiple(() =>
             {
                 Assert.That(validationResult, Is.Not.Null);
@@ -73,13 +82,16 @@ namespace POC.Webcam.js.Domain.Test.Unit.Persons.Entities
         [TestCase(StringsWithPredefinedSizes.StringWith101Caracters)]
         public void Password_Invalid(string password)
         {
+            //Arrange
             var person = MockData.Person;
             person.Password = password;
 
+            //Act
             var validationResult = ValidateModelHelper.ValidateModelWithAnotations(person);
 
             TestContext.WriteLine(validationResult.ToJson());
 
+            //Assert
             Assert.Multiple(() =>
             {
                 Assert.That(validationResult, Is.Not.Null);
@@ -92,13 +104,16 @@ namespace POC.Webcam.js.Domain.Test.Unit.Persons.Entities
         [TestCase("")]
         public void Image_Invalid(string image)
         {
+            //Arrange
             var person = MockData.Person;
             person.Image = image;
 
+            //Act
             var validationResult = ValidateModelHelper.ValidateModelWithAnotations(person);
 
             TestContext.WriteLine(validationResult.ToJson());
 
+            //Assert
             Assert.Multiple(() =>
             {
                 Assert.That(validationResult, Is.Not.Null);
