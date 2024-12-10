@@ -7,11 +7,13 @@ This application contains an example of crud using the Webcam.js library to capt
 ---
 
 ## Frameworks:
+
 - .Net 9
 
 ---
 
 ## Libraries (only most important):
+
 - Bootstrap
 - Jquery
 - BCrypt.Net-Next
