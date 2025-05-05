@@ -4,13 +4,9 @@
 
 This application contains an example of crud using the Webcam.js library to capture images, and it is also possible to upload images
 
----
-
 ## Frameworks:
 
 - .Net 9
-
----
 
 ## Libraries (only most important):
 
